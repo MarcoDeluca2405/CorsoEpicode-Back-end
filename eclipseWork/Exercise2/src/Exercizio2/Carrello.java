@@ -2,8 +2,8 @@ package Exercizio2;
 
 public class Carrello {
 
-	public int idCodeClient;
-	public Object [] listArt;
+	public Client idCodeClient;
+	public Articolo [] listArt;
 	public double somma_articoli;
 	
 }
