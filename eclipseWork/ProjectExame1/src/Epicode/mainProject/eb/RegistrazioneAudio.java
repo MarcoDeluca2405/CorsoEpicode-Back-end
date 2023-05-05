@@ -2,7 +2,7 @@ package Epicode.mainProject.eb;
 
 public class RegistrazioneAudio extends Multimediale implements Volume {
 	
-	private int vol=8;
+	private int vol=5;
 	private String [] vol_attuale= new String [10];
 	
 	

@@ -43,7 +43,7 @@ public abstract class Multimediale {
 		
 		@Override
 		public  String toString() {
-			return this.titolo+" "+this.durata;
+			return this.titolo;
 		}
 	
 }
