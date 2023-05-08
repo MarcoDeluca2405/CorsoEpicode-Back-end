@@ -1,8 +1,8 @@
 package Exercise3;
 
 public class Banca {
-	public static void main(String args[]) throws BancaException{
-		ContoCorrente conto1 = new ContoCorrente("Grossi Mario", 0.0);
+	public static void main(String args[]){
+		ContoCorrente conto1 = new ContoCorrente("Grossi Mario", 2000.0);
 
 		System.out.println("Saldo conto: " + conto1.restituisciSaldo());
 
@@ -15,7 +15,7 @@ public class Banca {
 			e.printStackTrace();
 		}
 
-		ContoOnLine conto2 = new ContoOnLine("Rossi Luigi", 2350.0, 2500);
+		ContoOnLine conto2 = new ContoOnLine("Rossi Luigi", 2350.0, 1500);
 
 		conto2.stampaSaldo();
 
