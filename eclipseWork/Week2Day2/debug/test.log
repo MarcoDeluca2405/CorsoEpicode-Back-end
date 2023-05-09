@@ -205,3 +205,32 @@
 19501 [main] INFO  Esercizio3.MainProject - {Francesco=0987, MArio=12345, Rossi=43456}
 19501 [main] INFO  Esercizio3.MainProject - Cosa vuoi Cercare? inserisci numero contatto
 28365 [main] INFO  Esercizio3.MainProject - 12345
+301  [main] INFO  Esercizio3.MainProject - Inserisci Nome
+2084 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+3837 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+286  [main] INFO  Esercizio3.MainProject - Inserisci Nome
+2185 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+4593 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+301  [main] INFO  Esercizio3.MainProject - Inserisci Nome
+3196 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+4685 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+6069 [main] INFO  Esercizio3.MainProject - Inserisci Nome
+7652 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+9427 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+11492 [main] INFO  Esercizio3.MainProject - Inserisci Nome
+13772 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+15580 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+290  [main] INFO  Esercizio3.MainProject - Inserisci Nome
+3556 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+4611 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+4995 [main] INFO  Esercizio3.MainProject - Inserisci Nome
+6611 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+8962 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+10427 [main] INFO  Esercizio3.MainProject - Inserisci Nome
+12610 [main] INFO  Esercizio3.MainProject - Inserisci Numero
+15211 [main] INFO  Esercizio3.MainProject - vuoi continuare premi un qualsisi numero altrimenti premi 0
+18035 [main] INFO  Esercizio3.MainProject - {Francesco=0000, Rossi=12334, Mario=231345}
+18035 [main] INFO  Esercizio3.MainProject - Cosa vuoi Cercare? inserisci nome contatto
+26498 [main] INFO  Esercizio3.MainProject - Rossi - 12334
+26499 [main] INFO  Esercizio3.MainProject - Cosa vuoi Cercare? inserisci numero contatto
+32595 [main] INFO  Esercizio3.MainProject - 0000 - [Francesco]

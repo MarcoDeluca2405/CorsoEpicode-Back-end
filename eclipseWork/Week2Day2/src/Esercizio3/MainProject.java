@@ -18,9 +18,13 @@ public class MainProject {
 		stampaContatti(removeTel(tel,nome));
 		*/
 		
-		log.info("Cosa vuoi Cercare? inserisci numero contatto");
+		log.info("Cosa vuoi Cercare? inserisci nome contatto");
 		String number=scan.nextLine();
 		stampaFindTelName(tel,number);
+		log.info("Cosa vuoi Cercare? inserisci numero contatto");
+		String nome=scan.nextLine();
+		stampaFindTelNumber(tel,nome);
+		
 	}
 
 	
@@ -60,7 +64,15 @@ public class MainProject {
 	
 	
 	public static void stampaFindTelNumber(Map<String,String> tel,String number) {
-		Map<String,String> newTel=tel;
+		Set <String> result= new HashSet<>();
+		if(tel.containsValue(number)) {
+			for(Map.Entry<String, String> entry : tel.entrySet()) {
+				if(Objects.equals(entry.getValue(),number)){
+					result.add(entry.getKey());
+				}
+			}
+		}
+		log.info(number+" - "+result);
 		
 	///	log.info(newTel);
 		
