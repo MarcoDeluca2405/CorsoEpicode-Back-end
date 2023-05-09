@@ -28,7 +28,7 @@ static Logger log=LoggerFactory.getLogger(MainProject.class);
 		int [] arr=new int[n];
 		
 		for(Integer i: arr) {
-			arrList.add((int) (Math.random()*100));
+			arrList.add((int) (Math.random()*101));
 		}
 		arrList.sort(null);
 		return arrList;
