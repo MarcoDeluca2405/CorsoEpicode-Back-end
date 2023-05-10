@@ -12,17 +12,17 @@ public class MainProject {
 		Map<String,String> tel=addTel();
 		
 		stampaContatti(tel);
-	/*	
+		
 		log.info("Cosa vuoi rimuovere? inserisci nome contatto");
 		String nome=scan.nextLine();
 		stampaContatti(removeTel(tel,nome));
-		*/
+		
 		
 		log.info("Cosa vuoi Cercare? inserisci nome contatto");
 		String number=scan.nextLine();
 		stampaFindTelName(tel,number);
 		log.info("Cosa vuoi Cercare? inserisci numero contatto");
-		String nome=scan.nextLine();
+		 nome=scan.nextLine();
 		stampaFindTelNumber(tel,nome);
 		
 	}
