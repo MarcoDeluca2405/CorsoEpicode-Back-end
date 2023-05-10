@@ -488,3 +488,34 @@
 262  [Thread-3] INFO  Esercizio2.ThreadChild - sono il terzo il valore è: 4599
 263  [Thread-4] INFO  Esercizio2.ThreadMain - La somma dei tre thread è: 13834
 263  [Thread-0] INFO  Esercizio2.ThreadFhater - La somma del padre è: 13568
+258  [Thread-0] INFO  Esercizio2.ThreadFhater - La somma del padre è: 13757
+263  [Thread-1] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4558
+264  [Thread-3] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4486
+264  [Thread-2] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4413
+264  [Thread-3] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 0
+264  [Thread-2] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 0
+264  [Thread-2] INFO  Esercizio2.ThreadChild - sono il terzo il valore è: 0
+264  [Thread-4] INFO  Esercizio2.ThreadMain - La somma dei tre thread è: 13457
+248  [Thread-0] INFO  Esercizio2.ThreadFhater - La somma del padre è: 13570
+255  [Thread-2] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4549
+255  [Thread-1] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4598
+255  [Thread-3] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4501
+255  [Thread-1] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 0
+255  [Thread-3] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 0
+255  [Thread-3] INFO  Esercizio2.ThreadChild - sono il terzo il valore è: 0
+255  [Thread-4] INFO  Esercizio2.ThreadMain - La somma dei tre thread è: 13648
+261  [Thread-0] INFO  Esercizio2.ThreadFhater - La somma del padre è: 13226
+266  [Thread-1] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4631
+266  [Thread-2] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 4416
+266  [Thread-3] INFO  Esercizio2.ThreadChild - sono il terzo il valore è: 4339
+268  [Thread-4] INFO  Esercizio2.ThreadMain - La somma dei tre thread è: 13386
+250  [Thread-1] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4449
+257  [Thread-2] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 4595
+258  [Thread-3] INFO  Esercizio2.ThreadChild - sono il terzo il valore è: 4385
+258  [Thread-0] INFO  Esercizio2.ThreadFhater - La somma del padre è: 13495
+258  [Thread-4] INFO  Esercizio2.ThreadMain - La somma dei tre thread è: 13043
+253  [Thread-1] INFO  Esercizio2.ThreadChild - sono il primo il valore è: 4502
+259  [Thread-2] INFO  Esercizio2.ThreadChild - sono il secondo il valore è: 4356
+259  [Thread-3] INFO  Esercizio2.ThreadChild - sono il terzo il valore è: 4514
+260  [Thread-4] INFO  Esercizio2.ThreadMain - La somma dei tre thread è: 13372
+260  [Thread-0] INFO  Esercizio2.ThreadFhater - La somma del padre è: 13505

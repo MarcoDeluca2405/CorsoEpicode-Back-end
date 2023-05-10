@@ -18,16 +18,14 @@ public class MainProject {
 		th2.join();
 		th3.start();
 		th3.join();
-		th.join();
 		tm.start();
-		tm.join();
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 
 	tf.start();
-		
+	
 			
 		
 	
