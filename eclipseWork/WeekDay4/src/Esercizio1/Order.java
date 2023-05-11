@@ -24,6 +24,15 @@ public Order(long id, String status, LocalDate orderDate, LocalDate deliveryDate
 
 
 
+public Order(long id, List<Product> products, Customer customer) {
+	super();
+	this.id = id;
+	this.products = products;
+	this.customer = customer;
+}
+
+
+
 public Order(long id, String status, List<Product> products) {
 	super();
 	this.id = id;
@@ -100,8 +109,8 @@ public void setDeliveryDate(LocalDate deliveryDate) {
 /**
  * @return the products
  */
-public List<Product> getProducts() {
-	return products;
+public Product getProducts() {
+	return (Product) products;
 }
 
 

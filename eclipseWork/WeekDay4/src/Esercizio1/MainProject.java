@@ -1,13 +1,14 @@
 package Esercizio1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MainProject {
-
+	private static List<Product> listProdotti=new ArrayList<Product>(); 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -37,6 +38,13 @@ public class MainProject {
 		Product prodotto13=new Product(0013,"shion","Baby",20);
 		Product prodotto14=new Product(0014,"fre","Books",500);
 		
+		
+	
+		
+		Customer c1=new Customer(1L,"Mario",1);
+		Customer c2=new Customer(2L,"Sara",2);
+		Customer c3=new Customer(3L,"Francesco",3);
+		
 		List<Product> listaProdotti2=new ArrayList<Product>();
 		listaProdotti2.add(prodotto8);
 		listaProdotti2.add(prodotto9);
@@ -45,21 +53,24 @@ public class MainProject {
 		listaProdotti2.add(prodotto12);
 		listaProdotti2.add(prodotto13);
 		listaProdotti2.add(prodotto14);
-
 		
-		List<Product> filterList=filtraLista(listaProdotti,"Books",100);
+		listProdotti.addAll(listaProdotti);
+		listProdotti.addAll(listaProdotti2);
+		
+		List<Product> filterList=filtraLista(listProdotti,"Books",100);
 		
 		filterList.forEach(f -> System.out.println(f));
-		Order order=new Order(0001,"Nel Carello",listaProdotti);
-		Order order2=new Order(0002,"Nel Carello",listaProdotti2);
-		
+		Order order=new Order(0001,listaProdotti,c1);
+		Order order2=new Order(0002,listaProdotti2,c2);
+		Order order3=new Order(0002,Arrays.asList(prodotto2,prodotto10,prodotto11,prodotto1),c3);
 		
 		List<Order> listOrder=new ArrayList<Order>();
 		listOrder.add(order);
 		listOrder.add(order2);
+		listOrder.add(order3);
 		
-		List<Product> filterOrder=filterOrder(listOrder,"Baby");
-		filterOrder.forEach(f-> System.out.println(f));
+		
+		
 		
 	}
 	
@@ -67,19 +78,13 @@ public class MainProject {
 	
 	public static List<Product> filtraLista(List <Product> list,String category,double price) {
 		return list.stream()
-				.filter(l -> l.getCategory().equals(category) && String.valueOf(l.getPrice()).equals( String.valueOf(price)))
+				.filter(l -> l.getCategory().equals(category) && l.getPrice()>=price)
 				.collect(Collectors.toList());
 	}
 	
 	
-	public static List<Product> filterOrder(List<Order> order,String category){
-		List<Product> listProdotti = new ArrayList<Product>();
-		
-		order.forEach(f->listProdotti.add((Product) f.getProducts()));
-		return listProdotti;
-		
-				
-		
-	}
-
+	
+	
 }
+
+
