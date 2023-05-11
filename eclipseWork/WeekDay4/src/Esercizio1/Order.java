@@ -8,7 +8,7 @@ private long id;
 private String status;
 private LocalDate orderDate;
 private LocalDate deliveryDate;
-private List<Product> products;
+private List <Product> products;
 private Customer customer;
 
 public Order(long id, String status, LocalDate orderDate, LocalDate deliveryDate, List<Product> products,
@@ -109,9 +109,35 @@ public void setDeliveryDate(LocalDate deliveryDate) {
 /**
  * @return the products
  */
-public Product getProducts() {
-	return (Product) products;
+
+
+
+/**
+ * @return the customer
+ */
+public Customer getCustomer() {
+	return customer;
 }
+
+
+
+
+
+
+@Override
+public String toString() {
+	return "Order [id=" + id + ", products=" + products + ", customer=" + customer + "]";
+}
+
+
+
+/**
+ * @return the products
+ */
+public List<Product> getProducts() {
+	return products;
+}
+
 
 
 /**
@@ -121,13 +147,6 @@ public void setProducts(List<Product> products) {
 	this.products = products;
 }
 
-
-/**
- * @return the customer
- */
-public Customer getCustomer() {
-	return customer;
-}
 
 
 /**

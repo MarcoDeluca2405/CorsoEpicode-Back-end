@@ -9,6 +9,15 @@ public class Product {
 	/**
 	 * @return the id
 	 */
+	
+
+	public Product(long id, String name, String category, double price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.price = price;
+	}
 	public long getId() {
 		return id;
 	}
@@ -60,6 +69,7 @@ public class Product {
 		return price;
 	}
 
+
 	/**
 	 * @param price the price to set
 	 */
@@ -67,11 +77,6 @@ public class Product {
 		this.price = price;
 	}
 
-	public Product(long id, String name, String category, double price) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.category = category;
-		this.price = price;
-	}
+
+	
 }

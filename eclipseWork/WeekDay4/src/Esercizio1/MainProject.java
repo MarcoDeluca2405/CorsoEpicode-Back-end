@@ -1,5 +1,6 @@
 package Esercizio1;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,6 +10,7 @@ import java.util.stream.Stream;
 
 public class MainProject {
 	private static List<Product> listProdotti=new ArrayList<Product>(); 
+	private static List<Order> listOrder=new ArrayList<Order>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -64,13 +66,21 @@ public class MainProject {
 		Order order2=new Order(0002,listaProdotti2,c2);
 		Order order3=new Order(0002,Arrays.asList(prodotto2,prodotto10,prodotto11,prodotto1),c3);
 		
-		List<Order> listOrder=new ArrayList<Order>();
+		
 		listOrder.add(order);
 		listOrder.add(order2);
 		listOrder.add(order3);
 		
+		List<Order> listaOrdineFiltrati=getOrder("Baby");
+		listaOrdineFiltrati.forEach(p-> System.out.println(p));
 		
 		
+		System.out.println("******** Lista Prodotti Boys scontati 10% *********");
+		List<Product> listaProdottiScontati = getProdottiScont("Baby", 10);
+		listaProdottiScontati.forEach(p -> System.out.println(p));
+		
+	
+	
 		
 	}
 	
@@ -82,8 +92,40 @@ public class MainProject {
 				.collect(Collectors.toList());
 	}
 	
+	public static List<Order> getOrder(String categoria){
+		return listOrder.stream()
+						.filter(o-> o.getProducts()
+								.stream()
+											.anyMatch(p->p.getCategory().equalsIgnoreCase(categoria))
+											)
+						.collect(Collectors.toList());
+																								
+													
+	}
 	
 	
+	public static List<Product> getProdottiScont(String category,double sconto){
+		return listProdotti.stream()
+				.filter(p-> p.getCategory().equals(category))
+				.map(p-> {
+					Product pr=p;
+					double somSconto=(pr.getPrice()*sconto)/100;
+					pr.setPrice(pr.getPrice()-somSconto);
+					return pr;
+					
+				})
+				.collect(Collectors.toList());
+	}
+	
+
+	public static List<Product> getProdottiTier(Integer tier,LocalDate dataStart,LocalDate dataEnd){
+		return listOrder.stream()
+				.filter(o -> o.getCustomer().getTier()==tier)
+				.filter(o -> o.getOrderDate().compareTo(dataStart) >= 0)
+				.filter(o -> o.getOrderDate().compareTo(dataEnd)<=0)
+				.flatMap(o -> o.getProducts().stream())
+				.collect(Collectors.toList());
+	}
 	
 }
 
