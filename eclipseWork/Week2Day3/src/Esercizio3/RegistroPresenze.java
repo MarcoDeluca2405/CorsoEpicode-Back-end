@@ -56,7 +56,7 @@ public class RegistroPresenze {
 		String [] arr=presenzeTxt.split("#");
 		
 		for(String i: arr) {
-			String [] arrPersona=i.split(" ");
+			String [] arrPersona=i.split("@");
 		Presenza p=new Presenza(arrPersona[0],Integer.parseInt(arrPersona[1]));
 		listPresenza.add(p);
 		}
