@@ -142,9 +142,8 @@ public void setRiviste(List<Riviste> riviste) {
 
 @Override
 public String toString() {
-	return "Catalogo [Libri=" + libri + ", Riviste=" + riviste + "]";
+	return libri+""+riviste;
 }
-
 
 
 

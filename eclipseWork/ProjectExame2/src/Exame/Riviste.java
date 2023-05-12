@@ -40,7 +40,7 @@ public class Riviste extends Catalogo {
 
 	@Override
 	public String toString() {
-		return "Rivista [ISBN: "+super.getISBN()+" Titolo: "+super.getTitolo()+" Anno di publicazione: "+super.getAnno_pubblcazione()+" numero pagine: "+super.getNumero_pagine()+" Periodicità: "+periodo+"]";
+		return "!"+super.getISBN()+"@"+super.getTitolo()+"@"+super.getAnno_pubblcazione()+"@"+super.getNumero_pagine()+"@"+periodo+"";
 	}
 
 

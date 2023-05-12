@@ -2,9 +2,7 @@ package Exame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.commons.io.*;
 import org.slf4j.Logger;
@@ -33,7 +31,12 @@ public class MainProject {
 	private static Logger log=LoggerFactory.getLogger(MainProject.class);
 	
 	public static void main(String [] arg) {
-	/*	
+	
+		try {
+			System.out.println("Sto leggendo il file");
+			readFile();
+			listCat.add(cat);
+		
 		for(int i=0;i<1;i++) {
 			addLibro();
 			
@@ -48,34 +51,58 @@ public class MainProject {
 		
 		listCat.add(cat);
 
-		listCat.forEach(l -> System.out.println(l));
+		
+
+		listCat.forEach(l ->l.getLibri().forEach(r->{
+			System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione());
+			
+		}));
+		
+		listCat.forEach(l ->l.getRiviste().forEach(r->{
+			System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo());
+			
+		}));
 		
 		
 		
-		/*
+		
 		System.out.println("Quale Elemeno vuoi ellimare tramite il codice ISBN?");
 		String ISBN=scan.nextLine();
-		
 		rimuoviElemento(ISBN);
-		*/
-		/*
-		ricercaISBN("L-0");
-		ricercaAnnoPub(2);
-		ricercaAutore("Stefano");
+		
+		System.out.println("Quale Elemeno vuoi cercare tramite il codice ISBN?");
+		ricercaISBN(scan.nextLine());
+		
+		System.out.println("Quale Elemeno vuoi cercare tramite la data di publicazione");
+		ricercaAnnoPub(Integer.parseInt(scan.nextLine()));
+		
+		System.out.println("Quale Elemeno vuoi cercare tramite l'autore");
+		ricercaAutore(scan.nextLine());
 		
 		
-		try {
-			writeFile();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	
-		*/
 		
 		
-		try {
-			readFile();
+		
+		
+			
+
+			listCat.forEach(l ->l.getLibri().forEach(r->{
+				System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione());
+				
+			}));
+			
+			listCat.forEach(l ->l.getRiviste().forEach(r->{
+				System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo());
+				
+			}));
+			
+			
+			System.out.println("Sovrascrivo i file");
+			writeFile();
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -195,8 +222,8 @@ public static void ricercaISBN(String ISBN) {
 			.filter(f-> f.getISBN().equals(ISBN)).collect(Collectors.toList());
 	
 	System.out.println("#### Ricerca Per ISBN ######");
-	ri.forEach(r-> System.out.println(r));
-	li.forEach(l-> System.out.println(l));
+	ri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo()));
+	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione()));
 }
 
 
@@ -211,8 +238,8 @@ public static void ricercaAnnoPub(Integer anno) {
 			.filter(f-> String.valueOf(f.getAnno_pubblcazione()).equals(String.valueOf(anno))).collect(Collectors.toList());
 	
 	System.out.println("#### Ricerca Per Data di publicazione ######");
-	ri.forEach(r-> System.out.println(r));
-	li.forEach(l-> System.out.println(l));
+	ri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo()));
+	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione()));
 }
 
 
@@ -222,11 +249,13 @@ public static void ricercaAutore(String autore) {
 			.filter(f-> f.getAutore().equals(autore)).collect(Collectors.toList());
 	
 	System.out.println("#### Ricerca Per Autore ######");
-	li.forEach(l-> System.out.println(l));
+	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione()));
 }
 
 public static void writeFile() throws IOException {
 	File write=new File("catalogo/catalogo.txt");
+	
+	
 	
 	FileUtils.writeLines(write, listCat,"UTF-8");
 	
@@ -236,45 +265,37 @@ public static void writeFile() throws IOException {
 
 public static void readFile() throws IOException{
 	File readCat=new File("catalogo/catalogo.txt");
+
+	String salv=FileUtils.readFileToString(readCat, "UTF-8");
+
+	System.out.println(salv);
 	
-	String readFile=FileUtils.readFileToString(readCat,"UTF-8");
-	
-	String[] cat=readFile.split("!");
-	
-	String [] catAll;
+	String [] oggetti;
+	String [] riviste;
 	String [] libri;
 	
-	catAll=readFile.split(",");
+	oggetti=salv.split("!");
 	
-	for(String l:catAll) {
-		if(l.contains("!")) {
-			System.out.println("trovato");
-			catAll=l.split("!");
-				
-			for(String li:catAll) {
-			if(li.contains("L")) {
-				System.out.println("ho trovato L: "+li);
-				libri=li.split(" ");
-				
-				System.out.println(libri[0]);
-				
-			
-				
-			}
-			
+	for(String ogg:oggetti) {
 		
+		if(ogg.startsWith("L")) {
+			libri=ogg.split("@");
+				Libri libro=new Libri(libri[0], libri[1], Integer.parseInt(libri[2]), Integer.parseInt(libri[3]), libri[4], libri[5]);
+				listLibri.add(libro);
 			
-			
-				System.out.println(li);
-			}
 			
 		}
-	
+		
+		if(ogg.startsWith("R-")) {
+			riviste=ogg.split("@");
+			Riviste r=new Riviste(riviste[0],riviste[1],Integer.parseInt(riviste[2]),Integer.parseInt(riviste[3]));
+			listRiviste.add(r);
+		
+			
+		}
+		
 		
 	}
-	
-
-	
 	
 }
 

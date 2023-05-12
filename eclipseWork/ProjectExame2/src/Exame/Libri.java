@@ -16,7 +16,7 @@ public Libri(String iSBN, String titolo, int anno_pubblcazione, int numero_pagin
 
 @Override
 public String toString() {
-	return "Libro [ISBN: "+super.getISBN()+" Titolo: "+super.getTitolo()+" Anno di publicazione: "+super.getAnno_pubblcazione()+" numero pagine: "+super.getNumero_pagine()+" Autore: "+Autore+" Genere: "+Genere+"]";
+	return "!"+super.getISBN()+"@"+super.getTitolo()+"@"+super.getAnno_pubblcazione()+"@"+super.getNumero_pagine()+"@"+Autore+"@"+Genere+"";
 }
 
 
