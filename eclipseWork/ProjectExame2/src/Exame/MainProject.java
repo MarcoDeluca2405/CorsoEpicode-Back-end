@@ -14,16 +14,26 @@ import java.util.*;
 
 public class MainProject {
 	
+	/*! Messaggio per il prof, Salve mi scuso in anticipo per il progetto che le ho consegnato.
+	 * So di per certo che la struttura che ho utilizzato sia sbagliata e che dovevo utilizzare 
+	 * una struttura di tipo Map che mi permetteva di utilizzare le chiave univoche e racchiudere gli oggetti
+	 * ma mi sono complicato la vita utilizzando una struttura di tipo List.
+	 * al prossimo progetto farò del mio meglio per consegnarlo piu' adeguato.
+	 *   */
+	
+	
 	
 	private static List<Libri> listLibri=new ArrayList<Libri>();
 	private static List<Riviste> listRiviste=new ArrayList<Riviste>();
 	private static List <Catalogo> listCat=new ArrayList<Catalogo>();
 	private static Catalogo cat=new Catalogo(listLibri,listRiviste);
 	
+	private static Random ran=new Random();
+	
 	private static List<Riviste> ri;
 	private static List<Libri> li;
 	
-	private static int ISBN_cont=0;
+	private static int ISBN_cont=ran.nextInt(1000);
 	private static String ISBN_L="L-"+ISBN_cont;
 	private static String ISBN_R="R-"+ISBN_cont;
 	
@@ -37,7 +47,7 @@ public class MainProject {
 			readFile();
 			listCat.add(cat);
 		
-		for(int i=0;i<1;i++) {
+		for(int i=0;i<2;i++) {
 			addLibro();
 			
 		}
@@ -52,31 +62,21 @@ public class MainProject {
 		listCat.add(cat);
 
 		
-
-		listCat.forEach(l ->l.getLibri().forEach(r->{
-			System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione());
-			
-		}));
-		
-		listCat.forEach(l ->l.getRiviste().forEach(r->{
-			System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo());
-			
-		}));
+		stampaElementi();
 		
 		
 		
-		
-		System.out.println("Quale Elemeno vuoi ellimare tramite il codice ISBN?");
+		System.out.println("Quale Elemento vuoi eliminare tramite il codice ISBN?");
 		String ISBN=scan.nextLine();
 		rimuoviElemento(ISBN);
 		
-		System.out.println("Quale Elemeno vuoi cercare tramite il codice ISBN?");
+		System.out.println("Quale Elemento vuoi cercare tramite il codice ISBN?");
 		ricercaISBN(scan.nextLine());
 		
-		System.out.println("Quale Elemeno vuoi cercare tramite la data di publicazione");
+		System.out.println("Quale Elemento vuoi cercare tramite la data di pubblicazione");
 		ricercaAnnoPub(Integer.parseInt(scan.nextLine()));
 		
-		System.out.println("Quale Elemeno vuoi cercare tramite l'autore");
+		System.out.println("Quale Elemento vuoi cercare tramite l'autore");
 		ricercaAutore(scan.nextLine());
 		
 		
@@ -85,18 +85,7 @@ public class MainProject {
 		
 		
 		
-		
-			
-
-			listCat.forEach(l ->l.getLibri().forEach(r->{
-				System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione());
-				
-			}));
-			
-			listCat.forEach(l ->l.getRiviste().forEach(r->{
-				System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo());
-				
-			}));
+				stampaElementi();
 			
 			
 			System.out.println("Sovrascrivo i file");
@@ -118,7 +107,7 @@ public static void addLibro() {
 	System.out.println("Inserisci titolo");
 	String titolo=scan.nextLine();
 	
-	System.out.println("Inserisci anno di publicazione");
+	System.out.println("Inserisci anno di pubblicazione");
 	int anno=Integer.parseInt(scan.nextLine());
 	
 	System.out.println("Inserisci Numero Pagine");
@@ -133,7 +122,7 @@ public static void addLibro() {
 	
 	Libri libro=new Libri(ISBN_L, titolo, anno, numeroPagine, Autore, Genere);
 	listLibri.add(libro);	
-	ISBN_cont++;
+	ISBN_cont=ran.nextInt(1000);
 	ISBN_L="L-"+ISBN_cont;
 	
 	}catch(Exception e){
@@ -150,7 +139,7 @@ try {
 	System.out.println("Inserisci titolo");
 	String titolo=scan.nextLine();
 	
-	System.out.println("Inserisci anno di publicazione");
+	System.out.println("Inserisci anno di pubblicazione");
 	int anno=Integer.parseInt(scan.nextLine());
 	
 	System.out.println("Inserisci Numero Pagine");
@@ -195,7 +184,7 @@ try {
 	}
 	}while(nonscelto);
 	listRiviste.add(r);
-	ISBN_cont++;
+	ISBN_cont=ran.nextInt(1000);
 	ISBN_R="R-"+ISBN_cont;
 
 	}catch(Exception e) {
@@ -203,10 +192,23 @@ try {
 		}
 	}
 
+public static void stampaElementi() {
+listLibri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di pubblicazione: "+r.getAnno_pubblcazione()));
+	
+	
+	listRiviste.forEach(r->{
+		System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di pubblicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo());
+		
+	});
+}
+
 
 public static void rimuoviElemento(String ISBN) {
 		listRiviste.removeIf(r-> r.getISBN().equals(ISBN));
 	listLibri.removeIf(r-> r.getISBN().equals(ISBN));
+	stampaElementi();
+	
+	
 	
 }
 
@@ -222,8 +224,8 @@ public static void ricercaISBN(String ISBN) {
 			.filter(f-> f.getISBN().equals(ISBN)).collect(Collectors.toList());
 	
 	System.out.println("#### Ricerca Per ISBN ######");
-	ri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo()));
-	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione()));
+	ri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di pubblicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo()));
+	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di pubblicazione: "+r.getAnno_pubblcazione()));
 }
 
 
@@ -237,9 +239,9 @@ public static void ricercaAnnoPub(Integer anno) {
 	li=listLibri.stream()
 			.filter(f-> String.valueOf(f.getAnno_pubblcazione()).equals(String.valueOf(anno))).collect(Collectors.toList());
 	
-	System.out.println("#### Ricerca Per Data di publicazione ######");
-	ri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di publicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo()));
-	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di publicazione: "+r.getAnno_pubblcazione()));
+	System.out.println("#### Ricerca Per Data di pubblicazione ######");
+	ri.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" anno di pubblicazione: "+r.getAnno_pubblcazione()+" periodicità: "+r.getPeriodo()));
+	li.forEach(r-> System.out.println("ISBN: "+r.getISBN()+" Titolo: "+r.getTitolo()+" numero pagine: "+r.getNumero_pagine()+" Autore: "+r.getAutore()+" Genere: "+r.getGenere()+" anno di pubblicazione: "+r.getAnno_pubblcazione()));
 }
 
 
@@ -296,6 +298,8 @@ public static void readFile() throws IOException{
 		
 		
 	}
+	
+	stampaElementi();
 	
 }
 
