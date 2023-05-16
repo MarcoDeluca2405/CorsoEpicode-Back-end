@@ -88,4 +88,9 @@ SELECT EXTRACT(YEAR FROM dataDiFattura) AS anno,COUNT(*) AS numero_fatture_A FRO
 
 SELECT numeroFattura,importo,iva,dataDiFattura,denominazione FROM fatture AS fa INNER JOIN fornitori AS fo ON fa.numeroFornitore = fo.numeroFornitore;
 
-SELECT * FROM fatture AS fa INNER JOIN clienti as cl ON fa.idCliente=cl.NumeroCliente;
+SELECT cl.regioneResidenza, count(*), sum(fa.importo) FROM fatture AS fa INNER JOIN clienti as cl ON fa.idCliente=cl.NumeroCliente GROUP BY cl.regioneResidenza;
+
+SELECT * FROM clienti INNER JOIN fatture ON fatture.idCLiente=clienti.numeroCliente
+WHERE EXTRACT(YEAR FROM dataNascita)=1999 AND fatture.importo >50;
+
+SELECT CONCAT(nome,'-',cognome) as denominazione FROM clienti WHERE regioneResidenza='Lombardia';
