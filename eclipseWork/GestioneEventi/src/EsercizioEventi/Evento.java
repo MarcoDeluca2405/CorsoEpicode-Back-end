@@ -6,14 +6,19 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="evento")
 public class Evento {
 
 	@Id
@@ -27,15 +32,19 @@ public class Evento {
 	
 	private String descrizione;
 	
+	@Enumerated(EnumType.STRING)
 	private tipoEvento evento;
 	
 	@Column(name="numero_max_partecipanti")
 	private int numeroMassimoPartecipanti;
 	
-	//@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Partecipazione> partecipazioni;
 	
 	private Location location;
+	
+	
+	private Set<Partecipazione> partecipazioni;
+	
+	
 
 	public Evento() {
 		super();
