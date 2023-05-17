@@ -1,12 +1,16 @@
 package EsercizioEventi;
 
 import java.time.LocalDate;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -27,12 +31,30 @@ public class Evento {
 	
 	@Column(name="numero_max_partecipanti")
 	private int numeroMassimoPartecipanti;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Partecipazione> partecipazione;
+	
+	private Location location;
 
 	public Evento() {
 		super();
 	}
 
 	
+	public Evento(String titolo, LocalDate dataEvento, String descrizione, tipoEvento evento,
+			int numeroMassimoPartecipanti, Set<Partecipazione> partecipazione, Location location) {
+		super();
+		this.titolo = titolo;
+		this.dataEvento = dataEvento;
+		this.descrizione = descrizione;
+		this.evento = evento;
+		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+		this.partecipazione = partecipazione;
+		this.location = location;
+	}
+
+
 	public Evento(String titolo, LocalDate dataEvento, String descrizione, tipoEvento evento,int numeroMassimoPartecipanti) {
 		super();
 		this.titolo = titolo;
@@ -45,10 +67,45 @@ public class Evento {
 	
 	
 
+	
+
 	@Override
 	public String toString() {
 		return "Evento [id=" + id + ", titolo=" + titolo + ", dataEvento=" + dataEvento + ", descrizione=" + descrizione
-				+ ", evento=" + evento + ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti + "]";
+				+ ", evento=" + evento + ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti
+				+ ", partecipazione=" + partecipazione + ", location=" + location + "]";
+	}
+
+
+	/**
+	 * @return the partecipazione
+	 */
+	public Set<Partecipazione> getPartecipazione() {
+		return partecipazione;
+	}
+
+
+	/**
+	 * @param partecipazione the partecipazione to set
+	 */
+	public void setPartecipazione(Set<Partecipazione> partecipazione) {
+		this.partecipazione = partecipazione;
+	}
+
+
+	/**
+	 * @return the location
+	 */
+	public Location getLocation() {
+		return location;
+	}
+
+
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 
