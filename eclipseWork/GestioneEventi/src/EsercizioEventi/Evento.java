@@ -32,8 +32,8 @@ public class Evento {
 	@Column(name="numero_max_partecipanti")
 	private int numeroMassimoPartecipanti;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Partecipazione> partecipazione;
+	//@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Partecipazione> partecipazioni;
 	
 	private Location location;
 
@@ -43,14 +43,14 @@ public class Evento {
 
 	
 	public Evento(String titolo, LocalDate dataEvento, String descrizione, tipoEvento evento,
-			int numeroMassimoPartecipanti, Set<Partecipazione> partecipazione, Location location) {
+			int numeroMassimoPartecipanti, Set<Partecipazione> partecipazionei, Location location) {
 		super();
 		this.titolo = titolo;
 		this.dataEvento = dataEvento;
 		this.descrizione = descrizione;
 		this.evento = evento;
 		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
-		this.partecipazione = partecipazione;
+		this.partecipazioni = partecipazioni;
 		this.location = location;
 	}
 
@@ -73,7 +73,7 @@ public class Evento {
 	public String toString() {
 		return "Evento [id=" + id + ", titolo=" + titolo + ", dataEvento=" + dataEvento + ", descrizione=" + descrizione
 				+ ", evento=" + evento + ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti
-				+ ", partecipazione=" + partecipazione + ", location=" + location + "]";
+				+ ", partecipazione=" + partecipazioni + ", location=" + location + "]";
 	}
 
 
@@ -81,7 +81,7 @@ public class Evento {
 	 * @return the partecipazione
 	 */
 	public Set<Partecipazione> getPartecipazione() {
-		return partecipazione;
+		return partecipazioni;
 	}
 
 
@@ -89,7 +89,7 @@ public class Evento {
 	 * @param partecipazione the partecipazione to set
 	 */
 	public void setPartecipazione(Set<Partecipazione> partecipazione) {
-		this.partecipazione = partecipazione;
+		this.partecipazioni = partecipazione;
 	}
 
 

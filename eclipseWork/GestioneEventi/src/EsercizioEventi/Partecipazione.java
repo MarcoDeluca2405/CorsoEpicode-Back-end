@@ -20,7 +20,7 @@ public class Partecipazione {
 	private int id;
 	
 	
-	@OneToOne(mappedBy = "partecipazione")
+	@OneToMany(mappedBy = "partecipazione")
 	private Persona persona;
 	
 	@Column(nullable = false)

@@ -36,7 +36,7 @@ public class Persona {
 	@Column(nullable = false)
 	private Sesso sesso;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Partecipazione> partecipazione;
 
 	public Persona() {
