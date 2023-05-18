@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Persona {
 	
 	private String nome;
 	private String cognome;
-	private Date dataDiNascita;
+	private LocalDate dataDiNascita;
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
@@ -35,6 +36,36 @@ public class Persona {
 	private List<Partecipazione> listaPartecipazioni;
 	
 	
+	public Persona() {
+		super();
+	}
+	
+	
+	
+	public Persona(String nome, String cognome, String email, LocalDate dataDiNascita, Sesso sesso) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataDiNascita = dataDiNascita;
+		this.email = email;
+		this.sesso = sesso;
+	}
+
+
+
+	public Persona(String nome, String cognome, LocalDate dataDiNascita, String email, Sesso sesso,
+			List<Partecipazione> listaPartecipazioni) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataDiNascita = dataDiNascita;
+		this.email = email;
+		this.sesso = sesso;
+		this.listaPartecipazioni = listaPartecipazioni;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -53,11 +84,11 @@ public class Persona {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	public Date getDataDiNascita() {
+	public LocalDate getDataDiNascita() {
 		return dataDiNascita;
 	}
-	public void setDataDiNascita(Date dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
+	public void setDataDiNascita(LocalDate date) {
+		this.dataDiNascita = date;
 	}
 	public String getEmail() {
 		return email;

@@ -1,13 +1,14 @@
 package model;
 
 import java.util.List;
-
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
+
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,18 +17,18 @@ import javax.persistence.Table;
 public class GaraDiAtletica extends Evento {
 
 	@Column(name ="lista_atleti")
-	@OneToMany(targetEntity = Persona.class, cascade = CascadeType.ALL)
-	private List<Persona> SetAtleti;
+	@ManyToMany(targetEntity = Persona.class, cascade = CascadeType.ALL)
+	private Set<Persona> SetAtleti;
 	
 	
-	@OneToOne(targetEntity=Persona.class)
+	@ManyToOne(targetEntity=Persona.class)
 	private Persona Vincitore;
 
 	public GaraDiAtletica() {
 		super();
 	}
 
-	public GaraDiAtletica(List<Persona> setAtleti, Persona vincitore) {
+	public GaraDiAtletica(Set<Persona> setAtleti, Persona vincitore) {
 		super();
 		SetAtleti = setAtleti;
 		Vincitore = vincitore;
@@ -41,14 +42,14 @@ public class GaraDiAtletica extends Evento {
 	/**
 	 * @return the setAtleti
 	 */
-	public List<Persona> getSetAtleti() {
+	public Set<Persona> getSetAtleti() {
 		return SetAtleti;
 	}
 
 	/**
 	 * @param setAtleti the setAtleti to set
 	 */
-	public void setSetAtleti(List<Persona> setAtleti) {
+	public void setSetAtleti(Set<Persona> setAtleti) {
 		SetAtleti = setAtleti;
 	}
 

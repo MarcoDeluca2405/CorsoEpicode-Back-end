@@ -2,8 +2,12 @@ package dao;
 import util.JpaUtil;
 import model.*;
 
+import java.util.List;
+
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,11 +83,43 @@ public class EventoDAO {
 
 	}
 	
-	public void getConcertiInStreamin(String t) {
+	public List<Concerto> getConcertiInStreamin(boolean inStreaming) {
+		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			Query q= em.createNamedQuery("concertiInStreaming");
+			q.setParameter("streaming",inStreaming);
+			return q.getResultList();
+			
+		}catch (Exception ex) {
+			em.getTransaction().rollback();
 		
+			throw ex;
+
+		} finally {
+			em.close();
+		}
 	}
 
 
+	public List<Concerto> getConcertiPerGenere(List<Concerto> concerti) {
+		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			
+			Query q=em.createNamedQuery("concertiPerGenere");
+			q.setParameter("listaGenere", concerti);
+			return q.getResultList();
+			
+		}catch (Exception ex) {
+			em.getTransaction().rollback();
+			
+			throw ex;
+
+		} finally {
+			em.close();
+		}
+	}
 
 
 

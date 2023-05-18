@@ -4,24 +4,27 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="concerto")
+@NamedQuery(name="concertiInStreaming",query = "SELECT c FROM Concerto c WHERE c.inStreaming = :streaming ")
+@NamedQuery(name="concertiPerGenere",query = "SELECT c FROM Concerto c WHERE c.genere IN :listaGenere ")
 public class Concerto extends Evento{
 	
 	@Enumerated(EnumType.STRING)
 	private Genere genere;
 	
-	@Enumerated(EnumType.STRING)
+
 	@Column(name="in_streaming")
-	private InStreaming inStreaming;
+	private boolean inStreaming;
 
 	public Concerto() {
 		super();
 	}
 
-	public Concerto(Genere genere, InStreaming inStreaming) {
+	public Concerto(Genere genere, boolean inStreaming) {
 		super();
 		this.genere = genere;
 		this.inStreaming = inStreaming;
@@ -49,14 +52,14 @@ public class Concerto extends Evento{
 	/**
 	 * @return the inStreaming
 	 */
-	public InStreaming getInStreaming() {
+	public boolean getInStreaming() {
 		return inStreaming;
 	}
 
 	/**
 	 * @param inStreaming the inStreaming to set
 	 */
-	public void setInStreaming(InStreaming inStreaming) {
+	public void setInStreaming(boolean inStreaming) {
 		this.inStreaming = inStreaming;
 	}
 	

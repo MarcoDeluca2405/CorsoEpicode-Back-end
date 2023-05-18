@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class LocationDAO {
 	private static final Logger logger = LoggerFactory.getLogger(LocationDAO.class);
 
-	public void save(Location object) {
+	public  void save(Location object) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		try {
 

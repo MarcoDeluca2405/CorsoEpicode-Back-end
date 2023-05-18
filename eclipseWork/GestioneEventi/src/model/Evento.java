@@ -2,6 +2,7 @@ package model;
 
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class Evento {
 	
 	
 	private String titolo;
-	private Date dataEvento;
+	private LocalDate dataEvento;
 	private String descrizione;
 	@Enumerated(EnumType.STRING)
 	private TipoEvento tipoEvento;
@@ -49,7 +50,7 @@ public class Evento {
 	}
 	
 	
-	public Evento(String titolo, Date dataEvento, String descrizione, TipoEvento tipoEvento,
+	public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento,
 			Integer numeroMassimoPartecipanti, Set<Partecipazione> setPartecipazioni, Location location) {
 		super();
 		this.titolo = titolo;
@@ -74,11 +75,11 @@ public class Evento {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public Date getDataEvento() {
+	public LocalDate getDataEvento() {
 		return dataEvento;
 	}
-	public void setDataEvento(Date dataEvento) {
-		this.dataEvento = dataEvento;
+	public void setDataEvento(LocalDate localDate) {
+		this.dataEvento = localDate;
 	}
 	public String getDescrizione() {
 		return descrizione;
