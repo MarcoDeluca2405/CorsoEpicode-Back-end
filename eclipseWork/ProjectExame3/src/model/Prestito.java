@@ -8,13 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(name = "findAllPrestito", query = "SELECT p FROM Prestito p")
+@NamedQuery(name="findUtenteAttuali",query = "SELECT e FROM Prestito p JOIN p.elementoprestato e JOIN p.utente u Where u.numeroditessera= :tessera AND p.restituzioneeffettiva IS NULL ")
+@NamedQuery(name="findNonResituiti",query="SELECT e,u, p.inizioPrestito,p.restitutizioneprevista FROM Prestito p JOIN p.elementoprestato e JOIN p.utente u WHERE p.restituzioneeffettiva IS NULL AND  p.restitutizioneprevista < :currentData")
 public class Prestito {
 	
 	@Id
@@ -23,20 +30,21 @@ public class Prestito {
 	private Integer id;
 	
 	@ManyToOne
+	@JoinColumn(name="n_card_utenti")
 	private Utente utente;
 	
-	@ManyToOne(targetEntity = Catalogo.class,cascade =  CascadeType.ALL)
-	@Column(name="elemento_prestato")
-	private Catalogo ElementoPrestato;
+	@ManyToOne
+	@JoinColumn(name="Cat")
+	private Catalogo elementoprestato;
 	
 	@Column(name="inizio_prestito")
 	private LocalDate inizioPrestito;
 	
 	@Column(name="restituzione_prevista")
-	private LocalDate restitutizionePrevista=inizioPrestito.plusDays(30);
+	private LocalDate restitutizioneprevista;
 	
 	@Column(name="restituzione_effettiva")
-	private LocalDate restituzioneEffettiva;
+	private LocalDate restituzioneeffettiva;
 
 	public Prestito() {
 		super();
@@ -46,10 +54,10 @@ public class Prestito {
 			LocalDate restitutizionePrevista, LocalDate restituzioneEffettiva) {
 		super();
 		this.utente = utente;
-		ElementoPrestato = elementoPrestato;
+		elementoprestato = elementoPrestato;
 		this.inizioPrestito = inizioPrestito;
-		this.restitutizionePrevista = restitutizionePrevista;
-		this.restituzioneEffettiva = restituzioneEffettiva;
+		this.restitutizioneprevista = inizioPrestito.plusDays(30);
+		this.restituzioneeffettiva = restituzioneEffettiva;
 	}
 
 	/**
@@ -70,14 +78,14 @@ public class Prestito {
 	 * @return the elementoPrestato
 	 */
 	public Catalogo getElementoPrestato() {
-		return ElementoPrestato;
+		return elementoprestato;
 	}
 
 	/**
 	 * @param elementoPrestato the elementoPrestato to set
 	 */
 	public void setElementoPrestato(Catalogo elementoPrestato) {
-		ElementoPrestato = elementoPrestato;
+		elementoprestato = elementoPrestato;
 	}
 
 	/**
@@ -98,35 +106,35 @@ public class Prestito {
 	 * @return the restitutizionePrevista
 	 */
 	public LocalDate getRestitutizionePrevista() {
-		return restitutizionePrevista;
+		return restitutizioneprevista;
 	}
 
 	/**
 	 * @param restitutizionePrevista the restitutizionePrevista to set
 	 */
-	public void setRestitutizionePrevista(LocalDate restitutizionePrevista) {
-		this.restitutizionePrevista = restitutizionePrevista;
+	public void setRestitutizionePrevista(LocalDate inizioPrestito) {
+		this.restitutizioneprevista = inizioPrestito.plusDays(30);
 	}
 
 	/**
 	 * @return the restituzioneEffettiva
 	 */
 	public LocalDate getRestituzioneEffettiva() {
-		return restituzioneEffettiva;
+		return restituzioneeffettiva;
 	}
 
 	/**
 	 * @param restituzioneEffettiva the restituzioneEffettiva to set
 	 */
 	public void setRestituzioneEffettiva(LocalDate restituzioneEffettiva) {
-		this.restituzioneEffettiva = restituzioneEffettiva;
+		this.restituzioneeffettiva = restituzioneEffettiva;
 	}
 
 	@Override
 	public String toString() {
-		return "Prestito [utente=" + utente + ", ElementoPrestato=" + ElementoPrestato + ", inizioPrestito="
-				+ inizioPrestito + ", restitutizionePrevista=" + restitutizionePrevista + ", restituzioneEffettiva="
-				+ restituzioneEffettiva + "]";
+		return "Prestito [utente=" + utente + ", ElementoPrestato=" + elementoprestato + ", inizioPrestito="
+				+ inizioPrestito + ", restitutizionePrevista=" + restitutizioneprevista + ", restituzioneEffettiva="
+				+ restituzioneeffettiva + "]";
 	}
 	
 	

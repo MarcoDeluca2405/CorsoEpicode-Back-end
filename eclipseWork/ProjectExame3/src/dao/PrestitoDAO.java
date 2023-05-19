@@ -1,5 +1,6 @@
 package dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -111,7 +112,7 @@ EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
 		
 		try {
 			
-			Query q=em.createNamedQuery("findAllCatalogo");
+			Query q=em.createNamedQuery("findAllPrestito");
 			return q.getResultList();
 			
 		}catch(Exception ex) {
@@ -128,12 +129,44 @@ EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
 	@Override
 	public List<Prestito> getAllElement(int numeroTessere) {
 		// TODO Auto-generated method stub
+	EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
+		
+		try {
+			
+			Query q=em.createNamedQuery("findUtenteAttuali");
+			q.setParameter("tessera", numeroTessere);
+			return q.getResultList();
+			
+		}catch(Exception ex) {
+			em.getTransaction().rollback();
+			log.error(ex.getMessage());
+			
+		}finally {
+			em.close();
+			
+		}
+		
 		return null;
 	}
 
 	@Override
-	public List<Prestito> getAllElementOverDate(Prestito e) {
-		// TODO Auto-generated method stub
+	public List<Prestito> getAllElementOverDate(LocalDate e) {
+	EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
+	try {
+		
+		Query q=em.createNamedQuery("findUtenteAttuali");
+		q.setParameter("currentData",e );
+		return q.getResultList();
+		
+	}catch(Exception ex) {
+		em.getTransaction().rollback();
+		log.error(ex.getMessage());
+		
+	}finally {
+		em.close();
+		
+	}
+		
 		return null;
 	}
 

@@ -1,5 +1,6 @@
 package daoInterface;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import model.Prestito;
@@ -11,5 +12,5 @@ public interface IPrestitoDAO {
 	public void update(Prestito e);
 	public List<Prestito> getAll();
 	public List<Prestito> getAllElement(int numeroTessere);
-	public List<Prestito> getAllElementOverDate(Prestito e);
+	public List<Prestito> getAllElementOverDate(LocalDate e);
 }

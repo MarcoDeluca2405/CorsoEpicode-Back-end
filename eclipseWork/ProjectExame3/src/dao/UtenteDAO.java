@@ -110,7 +110,7 @@ EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
 		
 		try {
 			
-			Query q=em.createNamedQuery("findAllCatalogo");
+			Query q=em.createNamedQuery("findAllUtente");
 			return q.getResultList();
 			
 		}catch(Exception ex) {

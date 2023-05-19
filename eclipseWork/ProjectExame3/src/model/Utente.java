@@ -7,18 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="utente")
+@NamedQuery(name = "findAllUtente", query = "SELECT u FROM Utente u")
 public class Utente {
 	
 	@Id
 	@SequenceGenerator(name = "seq_tessera",sequenceName = "seq_tessera",initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_tessera")
-	private Integer numeroDiTessera;
+	private Integer numeroditessera;
 	
 	private String nome;
 	private String cognome;
@@ -43,7 +45,7 @@ public class Utente {
 
 	@Override
 	public String toString() {
-		return "Utente [numeroDiTessera=" + numeroDiTessera + ", nome=" + nome + ", cognome=" + cognome
+		return "Utente [numeroDiTessera=" + numeroditessera + ", nome=" + nome + ", cognome=" + cognome
 				+ ", dataDiNascita=" + dataDiNascita + "]";
 	}
 
@@ -51,14 +53,14 @@ public class Utente {
 	 * @return the numeroDiTessera
 	 */
 	public Integer getNumeroDiTessera() {
-		return numeroDiTessera;
+		return numeroditessera;
 	}
 
 	/**
 	 * @param numeroDiTessera the numeroDiTessera to set
 	 */
 	public void setNumeroDiTessera(Integer numeroDiTessera) {
-		this.numeroDiTessera = numeroDiTessera;
+		this.numeroditessera = numeroDiTessera;
 	}
 
 	/**
