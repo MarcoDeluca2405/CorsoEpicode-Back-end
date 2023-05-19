@@ -117,7 +117,7 @@ public class MainProject {
 		List<Prestito> lp=pd.getAll();
 		
 		List<Prestito> lpt=pd.getAllElement(2);
-		List<Prestito> lpd=pd.getAllElementOverDate(LocalDate.of(2023, 06, 1));
+		List<Prestito> lpd=pd.getAllElementOverDate();
 		System.out.println("//////////////");
 		System.out.println("Catalogo:");
 		c.forEach(lc-> System.out.println(lc));

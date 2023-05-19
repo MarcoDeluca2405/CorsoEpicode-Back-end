@@ -12,5 +12,5 @@ public interface IPrestitoDAO {
 	public void update(Prestito e);
 	public List<Prestito> getAll();
 	public List<Prestito> getAllElement(int numeroTessere);
-	public List<Prestito> getAllElementOverDate(LocalDate e);
+	public List<Prestito> getAllElementOverDate();
 }

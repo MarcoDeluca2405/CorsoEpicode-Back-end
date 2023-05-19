@@ -134,7 +134,7 @@ EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
 		try {
 			
 			Query q=em.createNamedQuery("findUtenteAttuali");
-			q.setParameter("tessera", numeroTessere);
+			q.setParameter("nTessera", numeroTessere);
 			return q.getResultList();
 			
 		}catch(Exception ex) {
@@ -150,12 +150,11 @@ EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
 	}
 
 	@Override
-	public List<Prestito> getAllElementOverDate(LocalDate e) {
+	public List<Prestito> getAllElementOverDate(){
 	EntityManager em= JpaUtil.getEntityManagerFactory().createEntityManager();
 	try {
 		
-		Query q=em.createNamedQuery("findUtenteAttuali");
-		q.setParameter("currentData",e );
+		Query q=em.createNamedQuery("findNonResituiti");
 		return q.getResultList();
 		
 	}catch(Exception ex) {

@@ -20,8 +20,8 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQuery(name = "findAllPrestito", query = "SELECT p FROM Prestito p")
-@NamedQuery(name="findUtenteAttuali",query = "SELECT e FROM Prestito p JOIN p.elementoprestato e JOIN p.utente u Where u.numeroditessera= :tessera AND p.restituzioneeffettiva IS NULL ")
-@NamedQuery(name="findNonResituiti",query="SELECT e,u, p.inizioPrestito,p.restitutizioneprevista FROM Prestito p JOIN p.elementoprestato e JOIN p.utente u WHERE p.restituzioneeffettiva IS NULL AND  p.restitutizioneprevista < :currentData")
+@NamedQuery(name="findUtenteAttuali",query = "SELECT p FROM Prestito p WHERE p.utente.numeroditessera = :nTessera")
+@NamedQuery(name="findNonResituiti",query="SELECT p FROM Prestito p WHERE p.restitutizioneprevista IS NULL AND p.restituzioneeffettiva < CURRENT_DATE")
 public class Prestito {
 	
 	@Id
