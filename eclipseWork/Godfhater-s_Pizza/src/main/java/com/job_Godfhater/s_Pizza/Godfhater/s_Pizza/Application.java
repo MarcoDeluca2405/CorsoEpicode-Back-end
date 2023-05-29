@@ -119,6 +119,8 @@ public class Application {
 				if(scelta3) {
 					
 					Integer scelta4;
+					Pizza newpizza=null;
+					
 					
 					do {
 						
@@ -133,19 +135,20 @@ public class Application {
 						System.out.println("inserisci quantita");
 					Integer quantita=Integer.parseInt(scan.nextLine());
 					if(quantita>=1) {
+						pizza.get(scelta2).getIngrediente().get(scelta4).setQuantita(quantita);
+						
 					
-					pizza.get(scelta2).getIngrediente().get(scelta4).setQuantita(quantita);
-					Pizza newpizza=new Pizza(pizza.get(scelta2).getNome(),pizza.get(scelta2).getIngrediente(),pizza.get(scelta2).getCal(),pizza.get(scelta2).getPrezzo());
+					 newpizza=(Pizza) appContext.getBean("pizza",pizza.get(scelta2).getNome(),pizza.get(scelta2).getIngrediente(),pizza.get(scelta2).getCal(),pizza.get(scelta2).getPrezzo());
 					
-					pizza.set(scelta2,newpizza);
+					
 					
 					}else {
 						System.out.println("puoi solo aggiugere almeno 1 di quantità \n");
 					}
 					}
 					}while(!scelta4.equals(10));
-					
-					System.out.println("il costo della tua pizza è: "+pizza.get(scelta2).getPrezzo()+" €");
+					System.out.println("il costo della tua pizza è: "+newpizza.getPrezzo()+" €");
+					System.out.println("il costo della tua pizza è: "+newpizza.readPizza());
 
 					
 				}else {
