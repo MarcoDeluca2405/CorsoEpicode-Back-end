@@ -1,5 +1,8 @@
 package GodFhaterPizza_Extends.model;
 
+import lombok.ToString;
+
+
 public class PizzaSalami extends PizzaBase {
 
 	public PizzaSalami() {

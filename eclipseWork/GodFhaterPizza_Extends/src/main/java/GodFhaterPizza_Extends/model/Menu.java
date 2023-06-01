@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class Menu {
 	
 	private final List<Pizza> menuPizza = new ArrayList<>();

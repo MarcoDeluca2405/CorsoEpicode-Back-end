@@ -12,23 +12,19 @@ import lombok.ToString;
 @Data
 @Builder
 @ToString
-public class Tavolo implements Ordini{
+public class Tavolo {
 	
-	private int  numero;
+	private int  numeroTavolo;
 	private int max_coperti;
-	private StatoTavolo stato;
+	private boolean stato;
 	
-	
-	@Override
-	public double getCost(double coperto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Tavolo(int numeroTavolo, int max_coperti) {
+		super();
+		this.numeroTavolo = numeroTavolo;
+		this.max_coperti = max_coperti;
+		this.stato=false;
 	}
+	
+	
 
-	@Override
-	public void getAllOrdine(Menu ordine) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
