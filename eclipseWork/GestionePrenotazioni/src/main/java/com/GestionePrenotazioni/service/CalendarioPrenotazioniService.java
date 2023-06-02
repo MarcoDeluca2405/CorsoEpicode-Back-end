@@ -21,10 +21,11 @@ public class CalendarioPrenotazioniService {
 	
 	
 	
-	public CalendarioPrenotazioni newPrenotazioneCalendario(LocalDate data,Postazione postazione) {
-		return newPrenotazioneCalendario(data, postazione);
+	public CalendarioPrenotazioni newPrenotazioneCalendario() {
+		return newPrenotazioneCalendarioProvider.getObject();
 		
 	}
+	
 	
 	public void insertCalendarioPrenotazioni(CalendarioPrenotazioni c) {
 		db.save(c);
@@ -42,7 +43,7 @@ public class CalendarioPrenotazioniService {
 		System.out.println("Appuntameto Cancellato nel DB");
 	}
 	
-	public List<CalendarioPrenotazioni> AllCalendarioPrenotazioni(CalendarioPrenotazioni c) {
+	public List<CalendarioPrenotazioni> AllCalendarioPrenotazioni() {
 		return db.findAll();
 	}
 	

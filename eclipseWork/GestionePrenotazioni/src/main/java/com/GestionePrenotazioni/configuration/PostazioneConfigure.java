@@ -1,22 +1,20 @@
 package com.GestionePrenotazioni.configuration;
 
-import java.time.LocalDate;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import com.GestionePrenotazioni.model.CalendarioPrenotazioni;
 import com.GestionePrenotazioni.model.Postazione;
 
 @Configuration
-public class CalendarioPrenotazioniCongifure {
+public class PostazioneConfigure {
 
 	
-	@Bean("newPrenotazioneCalender")
-	@Scope("singleton")
-	public CalendarioPrenotazioni newCalendarioPrenotazioni(){
-		return new CalendarioPrenotazioni();
+	@Bean("createPostazione")
+	@Scope("prototype")
+	public Postazione createPostazione() {
+		return new Postazione();
 	}
+	
 	
 }

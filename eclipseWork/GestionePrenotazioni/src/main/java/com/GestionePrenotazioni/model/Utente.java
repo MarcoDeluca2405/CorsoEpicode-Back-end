@@ -1,8 +1,10 @@
 package com.GestionePrenotazioni.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,8 +34,8 @@ public class Utente {
 	private String nome;
 	private String email;
 	
-	@OneToMany
-	private List<CalendarioPrenotazioni> cal_prenotazioni;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<CalendarioPrenotazioni> cal_prenotazioni=new ArrayList<CalendarioPrenotazioni>();
 	
 	public Utente(String username, String nome, String email, List<CalendarioPrenotazioni> cal_prenotazioni) {
 		super();

@@ -13,4 +13,5 @@ public interface UtenteDAORepository extends JpaRepository<Utente, Long> {
 
 	public List<Utente> findByNome(String name);
 	
+	public Utente findById(int id);
 }
