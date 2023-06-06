@@ -17,7 +17,7 @@ public class Edificio {
 	private Long id;
 	private String nome;
 	private String indirizzo;
-	
+
 	@ManyToOne
 	private Citta citta;
 }

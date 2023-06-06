@@ -31,19 +31,19 @@ public class AppStartupRunner implements CommandLineRunner {
 
 	@Autowired
 	EdificioRepository edificioRepository;
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	RoleRepository roleRepository;
-	
+
 	@Autowired
 	PostazioneRepository postazioneRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
-
+			/*
 		if (cittaRepository.count() == 0) {
 
 			Citta initCitta = initCitta();
@@ -51,13 +51,11 @@ public class AppStartupRunner implements CommandLineRunner {
 			List<Postazione> postazioneList = initPostazione(edificioList);
 			List<Role> role = initRole();
 			User user = initUser(role);
-			
-			
 
 		}
 
 	}
-	
+
 	private List<Role> initRole() {
 		List<Role> result = new ArrayList<Role>();
 		Role role = new Role();
@@ -66,7 +64,6 @@ public class AppStartupRunner implements CommandLineRunner {
 		result.add(role);
 		log.info("Saved Role: {}", role.getRoleType());
 
-		
 		role = new Role();
 		role.setRoleType(RoleType.ROLE_USER);
 		roleRepository.save(role);
@@ -79,12 +76,12 @@ public class AppStartupRunner implements CommandLineRunner {
 
 	private List<Postazione> initPostazione(List<Edificio> edificioList) {
 		List<Postazione> result = new ArrayList<Postazione>();
-		
+
 		for (Edificio ed : edificioList) {
-			
-			for (int i=1;i<4;i++) {
+
+			for (int i = 1; i < 4; i++) {
 				Postazione post = new Postazione();
-				post.setCodice("P_"+i+"_"+ed.getNome());
+				post.setCodice("P_" + i + "_" + ed.getNome());
 				post.setDescrizione("Postazione " + post.getCodice());
 				post.setEdificio(ed);
 				post.setNumeroMassimoOccupanti(i);
@@ -94,10 +91,9 @@ public class AppStartupRunner implements CommandLineRunner {
 				result.add(post);
 
 			}
-			
-			
+
 		}
-		
+
 		return result;
 	}
 
@@ -109,9 +105,7 @@ public class AppStartupRunner implements CommandLineRunner {
 		user.setPassword("test");
 		user.setRoles(new HashSet<Role>(roles));
 		userRepository.save(user);
-		
-		
-		
+
 		log.info("Saved User: {}", user.getNome());
 
 		return user;
@@ -147,5 +141,7 @@ public class AppStartupRunner implements CommandLineRunner {
 		log.info("Saved Citta: {}", citta.getNome());
 		return citta;
 
+	}
+	*/
 	}
 }

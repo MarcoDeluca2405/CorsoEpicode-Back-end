@@ -12,24 +12,24 @@ import it.epicode.be.prenotazioni.repository.CittaRepository;
 
 @SpringBootTest
 class CittaTests {
-	
+
 	@Autowired
 	CittaRepository cittaRepository;
 
 	@Test
 	void contextLoads() {
 	}
-	
+
 	@Test
-	void testFindById(){
+	void testFindById() {
 		Optional<Citta> findById = cittaRepository.findById(1L);
-		
+
 	}
-	
+
 	@Test
-	void testFindByNome(){
+	void testFindByNome() {
 		Page<Citta> findByNome = cittaRepository.findByNome("Roma", null);
-		
+
 	}
 
 }

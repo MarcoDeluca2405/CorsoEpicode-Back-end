@@ -7,7 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import it.epicode.be.prenotazioni.model.Citta;
 
 public interface CittaRepository extends PagingAndSortingRepository<Citta, Long> {
-	
+
 	public Page<Citta> findByNome(String nome, Pageable pageable);
 
 }

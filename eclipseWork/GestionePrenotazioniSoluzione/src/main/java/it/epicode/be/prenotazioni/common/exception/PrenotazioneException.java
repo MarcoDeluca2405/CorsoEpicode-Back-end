@@ -1,7 +1,7 @@
 package it.epicode.be.prenotazioni.common.exception;
 
 public class PrenotazioneException extends RuntimeException {
-	
+
 	/**
 	 * 
 	 */

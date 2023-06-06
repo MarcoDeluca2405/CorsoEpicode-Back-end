@@ -16,7 +16,7 @@ import lombok.Data;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "auth_roles_generator")
-	@SequenceGenerator(name="auth_roles_generator", sequenceName = "auth_roles_seq")
+	@SequenceGenerator(name = "auth_roles_generator", sequenceName = "auth_roles_seq")
 	private Long id;
 
 	@Enumerated(EnumType.STRING)
