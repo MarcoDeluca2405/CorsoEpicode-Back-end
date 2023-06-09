@@ -28,6 +28,10 @@ public class UserService {
 		return db.save(user);
 	}
 	
+	public User updateUser(User user) {
+		return db.save(user);
+	}
+	
 	public String addDispositivo(Long id_user,Long id_device) {
 		db.findById(id_user).get().getDispositivi().add(dbd.findById(id_device).get());
 		dbd.findById(id_device).get().setStatus(Status.ASSEGNATO);

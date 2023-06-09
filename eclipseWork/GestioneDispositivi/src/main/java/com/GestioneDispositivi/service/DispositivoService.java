@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.GestioneDispositivi.models.Dispositivo;
 import com.GestioneDispositivi.repository.DispositivoDAO;
 
+import jakarta.persistence.EntityExistsException;
+
 @Service
 public class DispositivoService {
 
@@ -29,17 +31,22 @@ public class DispositivoService {
 	}
 	
 	
-	public void createDispositivo(Dispositivo dispositivo) {
-		 db.save(dispositivo);
+	public Dispositivo createDispositivo(Dispositivo dispositivo) {
+		 return db.save(dispositivo);
 		
 	}
 	
-	public void updateDispositivo(Dispositivo dispositivo) {
-		 db.save(dispositivo);
+	public String updateDispositivo(Long id,Dispositivo disp) {
+			if(!db.existsById(id)) {
+				throw new EntityExistsException("Device non esiste");
+			}
+				db.save(disp);
+		 return "Device Modificato: "+db.findById(id).toString();
 	}
 	
-	public void deleteDispositivo(Dispositivo dispositivo) {
-		 db.delete(dispositivo);
+	public String deleteDispositivo(Long id) {
+		 db.delete(db.findById(id).get());
+		 return "Device Ellinato: "+db.findById(id).get();
 	}
 	
 	public Dispositivo getByIdDispositivo(long id) {
