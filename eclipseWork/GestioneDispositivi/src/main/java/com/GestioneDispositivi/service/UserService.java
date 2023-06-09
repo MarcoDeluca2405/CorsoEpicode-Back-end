@@ -1,6 +1,7 @@
 package com.GestioneDispositivi.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,19 +28,19 @@ public class UserService {
 		return db.save(user);
 	}
 	
-	public String addDispositivo(User user,Dispositivo dispositivo) {
-		user.getDispositivi().add(dispositivo);
-		dispositivo.setStatus(Status.ASSEGNATO);
-		dbd.save(dispositivo);
-		db.save(user);
+	public String addDispositivo(Long id_user,Long id_device) {
+		db.findById(id_user).get().getDispositivi().add(dbd.findById(id_device).get());
+		dbd.findById(id_device).get().setStatus(Status.ASSEGNATO);
+		dbd.save(dbd.findById(id_device).get());
+		db.save(db.findById(id_user).get());
 		return "Utente ha salvato il dispostivo";
 	}
 	
-	public String deleteDispositivo(User user,Dispositivo dispositivo) {
-		user.getDispositivi().remove(dispositivo);
-		dispositivo.setStatus(Status.DISPONIBILE);
-		dbd.save(dispositivo);
-		db.save(user);
+	public String deleteDispositivo(Long id_user,Long id_device) {
+		db.findById(id_user).get().getDispositivi().remove(dbd.findById(id_device).get());
+		dbd.findById(id_device).get().setStatus(Status.DISPONIBILE);
+		dbd.save(dbd.findById(id_device).get());
+		db.save(db.findById(id_user).get());
 		return "Utente ha rimossso il dispositivo";
 	}
 	
@@ -49,5 +50,10 @@ public class UserService {
 	
 	public User getByIdUser(long id) {
 		return db.findById(id).get();
+	}
+	
+	public String removeUser(long id) {
+		db.deleteById(id);
+		return "Utente Elliminato";
 	}
 }

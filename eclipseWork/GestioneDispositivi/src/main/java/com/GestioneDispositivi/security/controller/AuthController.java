@@ -44,4 +44,6 @@ public class AuthController {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+    
+    
 }
