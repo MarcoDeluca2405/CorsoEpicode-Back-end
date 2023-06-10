@@ -19,9 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Smartphone  extends Dispositivo{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 	private Tipo_connettività connettività;
 }

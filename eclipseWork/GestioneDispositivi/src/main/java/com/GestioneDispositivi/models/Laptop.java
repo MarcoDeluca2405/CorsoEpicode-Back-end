@@ -19,10 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Laptop extends Dispositivo{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
 	
 	private String scheda_video;
 	

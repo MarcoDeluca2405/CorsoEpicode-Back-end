@@ -20,9 +20,6 @@ import lombok.NoArgsConstructor;
 public class Tablet  extends Dispositivo{
 
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 
 	private String tipo_display;

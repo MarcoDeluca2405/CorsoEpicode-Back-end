@@ -45,8 +45,8 @@ public class DispositivoService {
 	}
 	
 	public String deleteDispositivo(Long id) {
-		 db.delete(db.findById(id).get());
-		 return "Device Ellinato: "+db.findById(id).get();
+		 db.deleteById(id);
+		 return "Device Ellinato:";
 	}
 	
 	public Dispositivo getByIdDispositivo(long id) {

@@ -69,7 +69,8 @@ public class ControllerDevice {
 	
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
-	public ResponseEntity<?> deleteDevice(@PathVariable long id){
+	public ResponseEntity<String> deleteDevice(@PathVariable long id){
+		System.out.println(ds.getByIdDispositivo(id));
 		return ResponseEntity.ok(ds.deleteDispositivo(id));
 	}
 }
