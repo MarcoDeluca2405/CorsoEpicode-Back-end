@@ -25,6 +25,7 @@ public class UserService {
 		if(db.existsByUsername(user.getUsername())) {
 			throw new EntityNotFoundException("Username exist");
 		}
+		System.out.println(user);
 		return db.save(user);
 	}
 	
