@@ -68,12 +68,17 @@ public class Service_Sonda {
 			if(s.getId().equals(id)) {
 				s.setLivello_fummo(0);
 				
+
 				if(in_allarme.stream().anyMatch(a-> a.getId().equals(s.getId()))) {
+					message= "livello di fumo è stato ripristinato ->"+s;
+					log.info("livello di fumo è stato ripristinato ->"+s);
 					in_allarme.remove(s);
+				}else {
+					message= "livello di fumo è stato ripristinato ->"+s;
+					log.info("livello di fumo è stato ripristinato ->"+s);
 				}
 				
-				log.info("livello di fumo è stato ripristinato ->"+s);
-				message= "livello di fumo è stato ripristinato ->"+s;
+			
 			}else {
 				message= "non esiste nessuna corrispodenza al numero di sonda";
 			}
