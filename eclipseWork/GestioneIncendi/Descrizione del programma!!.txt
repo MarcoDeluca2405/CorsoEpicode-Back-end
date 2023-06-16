@@ -1,0 +1,21 @@
+
+	Ho pensato di creare un Programma Monolita che è pensata ad-hoc 
+	per il controllo corretto delle sonde in allarme o non.
+	Pensandola in una strutta semplice è efficace.
+	in questo progetto non ho utlizzato non sono stati utilizzati: 
+	JPA e SpringSecurity.
+	ha una funzione stand-alone
+	il pattern che ho usato è prototype
+
+	sequenti funzionalità:
+	si da la possibilità di creare una soda e di rilevare il livello di fumo in modo automatico.
+	si da la possibilità di modificare e di ripristinare il livello di fumo della sonda.
+	si da la possibilità di rimuovere di eliminare una sonda.
+	si da la possibilità di controllare le sonde in allarme.
+	si da la possibilità di controllare tute le sonde attive.
+	
+	Eseguito anche il Test in Junit:
+	Test - testAllarm();
+	Test - testDifferentObject();
+	Test - removedListAllarmById();
+	

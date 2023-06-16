@@ -20,7 +20,7 @@ import jakarta.websocket.server.PathParam;
 public class Controller_sonda {
 	@Autowired Service_Sonda ss;
 	
-	@PostMapping(value = "/alarm", params = {"id", "lat", "lon", "smokeLevel"})
+	@PostMapping(value = "/allarme", params = {"id", "lat", "lon", "smokeLevel"})
 	public ResponseEntity<?> addSonda(@RequestParam("id") long id, @RequestParam("lat") int lat, @RequestParam("lon") int lon,@RequestParam("smokeLevel") int level) {
 		Sonda s=new Sonda();
 		s.setId(id);
@@ -37,12 +37,12 @@ public class Controller_sonda {
 		return ResponseEntity.ok(ss.getAllsonde());
 	}
 	
-	@GetMapping(value="/alarm/all")
+	@GetMapping(value="/allarme/all")
 	public ResponseEntity<?> getAllAlarm(){
 		return ResponseEntity.ok(ss.allAlarmiAttivi());
 		}
 	
-	@PutMapping(value="/alarm/reset", params= {"id"})
+	@PutMapping(value="/allarme/reset", params= {"id"})
 	public ResponseEntity<?> resetSonda(@RequestParam("id") long id){
 		return ResponseEntity.ok(ss.resetSonda(id));
 	}
